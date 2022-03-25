@@ -1,11 +1,13 @@
 FROM node:17
 
-WORKDIR /send
+WORKDIR /payment
 
-COPY send/package.json ./
+COPY yarn.lock package.json ./
 
 RUN yarn
 
-COPY send/. .
+COPY . .
+
+RUN yarn build
 
 CMD ["yarn","start"]
